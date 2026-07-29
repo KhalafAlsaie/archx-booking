@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-root">
+<html lang="en" dir="ltr" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,15 +41,15 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #07050a;
             color: #f3f4f6;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        [dir="ltr"] body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        [dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
         }
         
         #webgl-canvas {
@@ -156,11 +156,11 @@
         <div class="flex items-center gap-3">
             <button onclick="playClickSound(); toggleLanguage();" class="elite-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-pink-500 transition">
                 <i class="fa-solid fa-globe text-pink-500"></i>
-                <span id="lang-label">EN</span>
+                <span id="lang-label">AR</span>
             </button>
             <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="elite-btn px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
                 <i class="fa-solid fa-bolt"></i>
-                <span data-i18n="bookBtn">حجز استشارة فورية</span>
+                <span data-i18n="bookBtn">Book Instant Consult</span>
             </button>
         </div>
     </header>
@@ -172,19 +172,19 @@
         <section class="text-center py-10 md:py-16 flex flex-col items-center">
             <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full elite-panel text-pink-300 text-xs font-bold mb-6 border border-pink-500/40 shadow-lg">
                 <span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span>
-                <span data-i18n="badge">منصة هندسة النظم المتقدمة والأمن السيبراني 2026</span>
+                <span data-i18n="badge">Advanced Web Design & Systems Engineering 2026</span>
             </div>
 
             <h2 class="text-3xl md:text-6xl font-black text-white leading-tight mb-6 max-w-4xl" data-i18n="heroTitle">
-                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500">بمعايير المستقبل</span>
+                We Build Next-Gen Software Systems & Interactive Interfaces <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500">with Future Standards</span>
             </h2>
 
             <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="heroDesc">
-                حلول رقمية هجومية ودفاعية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك المطلقة.
+                Cutting-edge web design, advanced server architecture, and flawless code to secure your project's absolute digital dominance.
             </p>
 
             <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="elite-btn px-10 py-4 rounded-2xl text-sm flex items-center gap-3">
-                <span data-i18n="ctaPrimary">ابدأ حجز استشارتك الآن</span>
+                <span data-i18n="ctaPrimary">Start Consultation Booking Now</span>
                 <i class="fa-solid fa-arrow-down"></i>
             </button>
         </section>
@@ -192,13 +192,13 @@
         <!-- Booking Section -->
         <section id="booking-section" class="elite-panel p-6 md:p-12 rounded-[2.5rem] border border-pink-500/40 shadow-2xl">
             
-            <div class="mb-8 text-center md:text-right" id="booking-header-container">
+            <div class="mb-8 text-center md:text-left" id="booking-header-container">
                 <div class="w-12 h-12 rounded-2xl bg-pink-500/15 text-pink-500 flex items-center justify-center text-xl mb-3 border border-pink-500/40 mx-auto md:mx-0">
                     <i class="fa-solid fa-microchip"></i>
                 </div>
-                <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">نظام الحجز السيبراني الذكي</h3>
+                <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">Elite Digital Booking System</h3>
                 <p class="text-xs text-slate-300/80 mt-1" data-i18n="modalDesc">
-                    اختر التاريخ والساعة بدقة. المواعيد المحجوزة يتم شطبها فورياً ولا يمكن حجزها مرة أخرى!
+                    Select your date & time carefully. Booked slots are struck through instantly and cannot be re-booked!
                 </p>
             </div>
 
@@ -206,37 +206,37 @@
             <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
                 
                 <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
-                <input type="hidden" name="subject" value="حجز موعد استشاري جديد عبر موقع Archx.core">
-                <input type="hidden" name="from_name" value="منصة Archx.core">
+                <input type="hidden" name="subject" value="New Consultation Booking via Archx.core">
+                <input type="hidden" name="from_name" value="Archx.core Platform">
 
                 <div>
-                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
-                    <input type="text" id="name-input" name="name" required value="مشروع المستقبل" placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="nameLabel">Your Full Name *</label>
+                    <input type="text" id="name-input" name="name" required value="Future Project" placeholder="Enter your full name" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="phoneLabel">Phone / WhatsApp Number (No Email Required) *</label>
                     <input type="tel" name="phone" required value="00962790000000" placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المتقدمة</label>
+                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="serviceLabel">Advanced Service Type</label>
                         <select name="service_type" id="service-select" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition">
-                            <option value="هندسة خوادم وأنظمة متقدمة" data-i18n="opt1">هندسة خوادم وأنظمة متقدمة</option>
-                            <option value="أمن سيبراني واختبار اختراق" data-i18n="opt2">أمن سيبراني واختبار اختراق</option>
-                            <option value="استشارة برمجية وهندسة معمارية" data-i18n="opt3">استشارة برمجية وهندسة معمارية</option>
+                            <option value="Advanced Web Design & UI/UX" data-i18n="opt1">Advanced Web Design & UI/UX</option>
+                            <option value="Full-Stack Systems & Server Engineering" data-i18n="opt2">Full-Stack Systems & Server Engineering</option>
+                            <option value="Software Consultation & Architecture" data-i18n="opt3">Software Consultation & Architecture</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
+                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="dateLabel">Appointment Date *</label>
                         <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition">
                     </div>
                 </div>
 
                 <!-- Interactive Time Slots -->
                 <div>
-                    <label class="block text-xs font-bold text-pink-400/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
+                    <label class="block text-xs font-bold text-pink-400/90 mb-2" data-i18n="timeLabel">Select Time Slot (Booked slots are struck through) *</label>
                     <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                         <!-- Populated via JS -->
                     </div>
@@ -244,13 +244,13 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="msgLabel">تفاصيل النظام أو المشروع التقني</label>
-                    <textarea name="message" id="msg-textarea" rows="3" placeholder="اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">مرحباً، أود حجز موعد استشاري لتطوير نظام برمجي متقدم وواجهة تفاعلية بمعايير المستقبل.</textarea>
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="msgLabel">System & Project Details</label>
+                    <textarea name="message" id="msg-textarea" rows="3" placeholder="Type your system details, design requirements, or project idea..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">Hello, I would like to book a consultation appointment to develop an advanced web design and interactive interface with future standards.</textarea>
                 </div>
 
                 <button type="submit" id="submit-btn" onclick="playClickSound()" class="elite-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-terminal"></i>
-                    <span data-i18n="submitBtn">تأكيد حجز الموعد وإرساله</span>
+                    <span data-i18n="submitBtn">Confirm & Send Appointment</span>
                 </button>
             </form>
 
@@ -266,7 +266,7 @@
 
     <!-- Footer -->
     <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 elite-panel rounded-2xl mb-4 gap-4">
-        <div data-i18n="footer">&copy; 2026 Archx.core. جميع الحقوق محفوظة.</div>
+        <div data-i18n="footer">&copy; 2026 Archx.core. All rights reserved.</div>
         <div class="flex items-center gap-4">
             <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-pink-400 transition font-bold">
                 <i class="fa-brands fa-instagram text-base text-pink-500"></i>
@@ -302,11 +302,11 @@
             ar: {
                 subtitle: "Elite Pink Cyber Architecture",
                 bookBtn: "حجز استشارة فورية",
-                badge: "منصة هندسة النظم المتقدمة والأمن السيبراني 2026",
-                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">بمعايير المستقبل</span>",
-                heroDesc: "حلول رقمية هجومية ودفاعية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك المطلقة.",
+                badge: "منصة تصميم وتطوير الواجهات المتقدمة 2026",
+                heroTitle: "نصنع لك تصميم مواقع وتطبيقات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">بمعايير المستقبل</span>",
+                heroDesc: "تصميم مواقع وتطبيقات عصرية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك الرقمي.",
                 ctaPrimary: "ابدأ حجز استشارتك الآن",
-                modalTitle: "نظام الحجز السيبراني الذكي",
+                modalTitle: "نظام الحجز الرقمي الذكي",
                 modalDesc: "اختر التاريخ والساعة بدقة. المواعيد المحجوزة يتم شطبها فورياً ولا يمكن حجزها مرة أخرى!",
                 nameLabel: "اسمك الكريم *",
                 namePlaceholder: "أدخل اسمك الكامل",
@@ -315,23 +315,23 @@
                 serviceLabel: "نوع الخدمة المتقدمة",
                 dateLabel: "تاريخ الموعد *",
                 timeLabel: "اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *",
-                msgLabel: "تفاصيل النظام أو المشروع التقني",
-                msgPlaceholder: "اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك...",
+                msgLabel: "تفاصيل الموقع أو المشروع التقني",
+                msgPlaceholder: "اكتب تفاصيل موقعك، متطلبات التصميم، أو فكرة مشروعك...",
                 submitBtn: "تأكيد حجز الموعد وإرساله",
                 successMsg: "Booking Successful! Your elite appointment has been secured.",
-                opt1: "هندسة خوادم وأنظمة متقدمة",
-                opt2: "أمن سيبراني واختبار اختراق",
+                opt1: "تصميم واجهات وتطبيقات الويب المتقدمة (UI/UX)",
+                opt2: "هندسة الخوادم والأنظمة المتكاملة (Full-Stack)",
                 opt3: "استشارة برمجية وهندسة معمارية",
                 footer: "&copy; 2026 Archx.core. جميع الحقوق محفوظة."
             },
             en: {
                 subtitle: "Elite Pink Cyber Architecture",
                 bookBtn: "Book Instant Consult",
-                badge: "Advanced Systems Engineering & Cyber Security 2026",
-                heroTitle: "We Build Next-Gen Software Systems & Interactive Interfaces <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">with Future Standards</span>",
-                heroDesc: "Offensive & defensive digital solutions, advanced server architecture, and flawless code to secure your project's absolute dominance.",
+                badge: "Advanced Web Design & Systems Engineering 2026",
+                heroTitle: "We Build Next-Gen Web Design & Interactive Interfaces <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">with Future Standards</span>",
+                heroDesc: "Cutting-edge web design, advanced server architecture, and flawless code to secure your project's absolute digital dominance.",
                 ctaPrimary: "Start Consultation Booking Now",
-                modalTitle: "Elite Cyber Booking System",
+                modalTitle: "Elite Digital Booking System",
                 modalDesc: "Select your date & time carefully. Booked slots are struck through instantly and cannot be re-booked!",
                 nameLabel: "Your Full Name *",
                 namePlaceholder: "Enter your full name",
@@ -341,17 +341,18 @@
                 dateLabel: "Appointment Date *",
                 timeLabel: "Select Time Slot (Booked slots are struck through) *",
                 msgLabel: "System & Project Details",
-                msgPlaceholder: "Type your system details, security requirements, or project idea...",
+                msgPlaceholder: "Type your website details, design requirements, or project idea...",
                 submitBtn: "Confirm & Send Appointment",
                 successMsg: "Booking Successful! Your elite appointment has been secured.",
-                opt1: "Advanced Server & Systems Engineering",
-                opt2: "Cyber Security & Penetration Testing",
+                opt1: "Advanced Web Design & UI/UX",
+                opt2: "Full-Stack Systems & Server Engineering",
                 opt3: "Software Consultation & Architecture",
                 footer: "&copy; 2026 Archx.core. All rights reserved."
             }
         };
 
-        let currentLang = 'ar';
+        // تعيين اللغة الافتراضية إلى الإنجليزية مباشرة عند الفتح
+        let currentLang = 'en';
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -365,12 +366,12 @@
                 bookingHeader.classList.remove('md:text-right');
                 bookingHeader.classList.add('md:text-left');
                 document.getElementById('name-input').value = "Future Project";
-                document.getElementById('msg-textarea').value = "Hello, I would like to book a consultation appointment to develop an advanced software system and interactive interface with future standards.";
+                document.getElementById('msg-textarea').value = "Hello, I would like to book a consultation appointment to develop an advanced web design and interactive interface with future standards.";
             } else {
                 bookingHeader.classList.remove('md:text-left');
                 bookingHeader.classList.add('md:text-right');
                 document.getElementById('name-input').value = "مشروع المستقبل";
-                document.getElementById('msg-textarea').value = "مرحباً، أود حجز موعد استشاري لتطوير نظام برمجي متقدم وواجهة تفاعلية بمعايير المستقبل.";
+                document.getElementById('msg-textarea').value = "مرحباً، أود حجز موعد استشاري لتطوير تصميم مواقع وتطبيقات تفاعلية بمعايير المستقبل.";
             }
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -596,7 +597,7 @@
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> ' + (currentLang === 'ar' ? 'جاري تأكيد الحجز...' : 'Processing Booking...');
 
             const formData = new FormData(form);
-            formData.set('subject', `حجز موعد جديد (${selectedDate} - ${selectedTime})`);
+            formData.set('subject', `New Appointment Booking (${selectedDate} - ${selectedTime})`);
             
             try {
                 await fetch('https://api.web3forms.com/submit', {
