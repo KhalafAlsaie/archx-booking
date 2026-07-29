@@ -66,44 +66,44 @@
             background: rgba(19, 28, 56, 0.75);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(94, 234, 212, 0.18);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(129, 140, 248, 0.06);
         }
 
         .primary-btn {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #5eead4 0%, #818cf8 100%);
+            color: #0b1329;
             font-weight: 800;
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 10px 25px -5px rgba(129, 140, 248, 0.35);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .primary-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.55);
-            filter: brightness(1.1);
+            box-shadow: 0 15px 30px -5px rgba(129, 140, 248, 0.5);
+            filter: brightness(1.05);
         }
 
         .time-slot-btn {
             background: rgba(19, 28, 56, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(129, 140, 248, 0.3);
             color: #cbd5e1;
             transition: all 0.2s ease;
         }
 
         .time-slot-btn:hover:not(:disabled) {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.15);
+            border-color: #5eead4;
+            background: rgba(94, 234, 212, 0.12);
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+            box-shadow: 0 0 15px rgba(94, 234, 212, 0.2);
         }
 
         .time-slot-btn.selected {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: #ffffff;
-            border-color: #10b981;
+            background: linear-gradient(135deg, #5eead4, #818cf8);
+            color: #0b1329;
+            border-color: #5eead4;
             font-weight: 800;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.35);
         }
 
         .time-slot-btn:disabled {
@@ -128,11 +128,11 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
+            background: #5eead4;
         }
     </style>
 </head>
-<body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
+<body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-indigo-400 selection:text-slate-950">
 
     <!-- Interactive 3D Background Canvas -->
     <canvas id="webgl-canvas"></canvas>
@@ -140,18 +140,18 @@
     <!-- Header -->
     <header class="w-full max-w-7xl mx-auto p-4 md:p-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-3 cursor-pointer group" onclick="playClickSound(); window.scrollTo({top: 0, behavior: 'smooth'})">
-            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center border border-emerald-500/40 shadow-lg group-hover:border-emerald-400 transition">
-                <i class="fa-solid fa-code text-emerald-400 text-xl animate-pulse"></i>
+            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center border border-indigo-400/40 shadow-lg group-hover:border-teal-300 transition">
+                <i class="fa-solid fa-code text-teal-300 text-xl animate-pulse"></i>
             </div>
             <div>
-                <h1 class="text-2xl font-black tracking-wider text-white">Archx<span class="text-emerald-400">.</span>dev</h1>
-                <p class="text-[10px] tracking-widest text-emerald-300/70 uppercase font-bold" data-i18n="subtitle">Next-Gen Dev & Architecture</p>
+                <h1 class="text-2xl font-black tracking-wider text-white">Archx<span class="text-teal-300">.</span>dev</h1>
+                <p class="text-[10px] tracking-widest text-teal-200/70 uppercase font-bold" data-i18n="subtitle">Next-Gen Dev & Architecture</p>
             </div>
         </div>
 
         <div class="flex items-center gap-3">
-            <button onclick="playClickSound(); toggleLanguage();" class="glass-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-emerald-400 transition">
-                <i class="fa-solid fa-globe text-emerald-400"></i>
+            <button onclick="playClickSound(); toggleLanguage();" class="glass-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-teal-300 transition">
+                <i class="fa-solid fa-globe text-teal-300"></i>
                 <span id="lang-label">EN</span>
             </button>
             <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="primary-btn px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
@@ -166,13 +166,13 @@
 
         <!-- Hero Section -->
         <section class="text-center py-10 md:py-16 flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-emerald-300 text-xs font-bold mb-6 border border-emerald-500/30 shadow-md">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-teal-200 text-xs font-bold mb-6 border border-indigo-400/30 shadow-md">
+                <span class="w-2 h-2 rounded-full bg-teal-300 animate-ping"></span>
                 <span data-i18n="badge">منصة البرمجة وتطوير الواجهات الذكية 2026</span>
             </div>
 
             <h2 class="text-3xl md:text-6xl font-black text-white leading-tight mb-6 max-w-4xl" data-i18n="heroTitle">
-                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500">بمعايير المستقبل</span>
+                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500">بمعايير المستقبل</span>
             </h2>
 
             <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="heroDesc">
@@ -186,14 +186,14 @@
         </section>
 
         <!-- Booking Section -->
-        <section id="booking-section" class="glass-panel p-6 md:p-12 rounded-[2.5rem] border border-emerald-500/30 shadow-2xl">
+        <section id="booking-section" class="glass-panel p-6 md:p-12 rounded-[2.5rem] border border-indigo-400/30 shadow-2xl">
             
             <div class="mb-8 text-center md:text-right" id="booking-header-container">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-3 border border-emerald-500/30 mx-auto md:mx-0">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-400/10 text-teal-300 flex items-center justify-center text-xl mb-3 border border-indigo-400/30 mx-auto md:mx-0">
                     <i class="fa-solid fa-calendar-check"></i>
                 </div>
                 <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">نظام الحجز الذكي والمواعيد</h3>
-                <p class="text-xs text-emerald-200/80 mt-1" data-i18n="modalDesc">
+                <p class="text-xs text-teal-100/80 mt-1" data-i18n="modalDesc">
                     اختر التاريخ والساعة المناسبة. المواعيد المحجوزة ستظهر خطاً عليها ولا يمكن حجزها مجدداً، ويتم حفظ كل يوم بشكل مستقل!
                 </p>
             </div>
@@ -206,33 +206,33 @@
                 <input type="hidden" name="from_name" value="منصة Archx.dev">
 
                 <div>
-                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
-                    <input type="text" name="name" required placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
+                    <input type="text" name="name" required placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
-                    <input type="tel" name="phone" required placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
+                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
+                    <input type="tel" name="phone" required placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المطلوبة</label>
-                        <select name="service_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition">
+                        <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المطلوبة</label>
+                        <select name="service_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition">
                             <option value="تطوير منصة ويب متكاملة" data-i18n="opt1">تطوير منصة ويب متكاملة</option>
                             <option value="برمجة واجهات 3D تفاعلية" data-i18n="opt2">برمجة واجهات 3D تفاعلية</option>
                             <option value="استشارة برمجية وتطويرية" data-i18n="opt3">استشارة برمجية وتطويرية</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
-                        <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition">
+                        <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
+                        <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition">
                     </div>
                 </div>
 
                 <!-- Interactive Time Slots -->
                 <div>
-                    <label class="block text-xs font-bold text-emerald-200/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
+                    <label class="block text-xs font-bold text-teal-100/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
                     <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                         <!-- Populated via JS -->
                     </div>
@@ -240,8 +240,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="msgLabel">تفاصيل وملاحظات المشروع</label>
-                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل مشروعك أو فكرتك البرمجية..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder"></textarea>
+                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="msgLabel">تفاصيل وملاحظات المشروع</label>
+                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل مشروعك أو فكرتك البرمجية..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder"></textarea>
                 </div>
 
                 <button type="submit" id="submit-btn" onclick="playClickSound()" class="primary-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
@@ -251,8 +251,8 @@
             </form>
 
             <!-- Success Alert -->
-            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/90 border border-emerald-500 text-emerald-200 text-center text-xs font-bold">
-                <i class="fa-solid fa-circle-check text-xl mb-1 block text-emerald-400"></i>
+            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-indigo-950/90 border border-indigo-400 text-teal-100 text-center text-xs font-bold">
+                <i class="fa-solid fa-circle-check text-xl mb-1 block text-teal-300"></i>
                 <span data-i18n="successMsg">Booking Successful! Your appointment has been secured privately.</span>
             </div>
 
@@ -264,8 +264,8 @@
     <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 glass-panel rounded-2xl mb-4 gap-4">
         <div data-i18n="footer">&copy; 2026 Archx.dev. جميع الحقوق محفوظة.</div>
         <div class="flex items-center gap-4">
-            <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-emerald-400 transition font-bold">
-                <i class="fa-brands fa-instagram text-base text-emerald-400"></i>
+            <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-teal-300 transition font-bold">
+                <i class="fa-brands fa-instagram text-base text-teal-300"></i>
                 <span id="instagram-text">Archx_co</span>
             </a>
         </div>
@@ -300,7 +300,7 @@
                 subtitle: "Next-Gen Dev & Architecture",
                 bookBtn: "احجز موعدك",
                 badge: "منصة البرمجة وتطوير الواجهات الذكية 2026",
-                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500\">بمعايير المستقبل</span>",
+                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500\">بمعايير المستقبل</span>",
                 heroDesc: "حلول رقمية متطورة، أكواد نظيفة، وهندسة برمجية ثلاثية الأبعاد تضع مشروعك في قمة التنافسية العالمية.",
                 ctaPrimary: "ابدأ حجز استشارتك",
                 modalTitle: "نظام الحجز الذكي والمواعيد",
@@ -325,7 +325,7 @@
                 subtitle: "Next-Gen Dev & Architecture",
                 bookBtn: "Book Slot",
                 badge: "Next-Gen Development & Smart UI Platform 2026",
-                heroTitle: "Building Software Systems & Interactive UIs <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500\">with Future Standards</span>",
+                heroTitle: "Building Software Systems & Interactive UIs <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500\">with Future Standards</span>",
                 heroDesc: "Advanced digital solutions, clean code, and 3D architectural engineering that elevate your project to global competitiveness.",
                 ctaPrimary: "Start Consultation Booking",
                 modalTitle: "Smart Booking & Appointment System",
@@ -381,70 +381,121 @@
             });
         }
 
-        // Professional Three.js Background Animation
-        let scene, camera, renderer, cyberMesh, particlesMesh;
+        // Calm Floating Crystal Constellation — Three.js Background Animation
+        let scene, camera, renderer, particlesMesh, crystals = [];
+        let mouseX = 0, mouseY = 0;
+        const clock3D = new THREE.Clock();
 
         function init3D() {
             const canvas = document.getElementById('webgl-canvas');
             scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x0b1329, 0.014);
 
             camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 24;
+            camera.position.z = 26;
 
             renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            // Soft ambient + gentle colored lights (easy on the eyes)
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
             scene.add(ambientLight);
 
-            const emeraldLight = new THREE.PointLight(0x10b981, 4, 70);
-            emeraldLight.position.set(15, 15, 15);
-            scene.add(emeraldLight);
+            const tealLight = new THREE.PointLight(0x5eead4, 3, 85);
+            tealLight.position.set(18, 14, 18);
+            scene.add(tealLight);
 
-            const blueLight = new THREE.PointLight(0x3b82f6, 4, 70);
-            blueLight.position.set(-15, -15, 15);
-            scene.add(blueLight);
+            const periwinkleLight = new THREE.PointLight(0x818cf8, 3, 85);
+            periwinkleLight.position.set(-18, -12, 16);
+            scene.add(periwinkleLight);
 
-            const geometry = new THREE.TorusKnotGeometry(5, 1.5, 128, 32);
-            const material = new THREE.MeshStandardMaterial({
-                color: 0x10b981,
-                wireframe: true,
-                roughness: 0.1,
-                metalness: 0.95
-            });
-            cyberMesh = new THREE.Mesh(geometry, material);
-            scene.add(cyberMesh);
+            // Floating low-poly crystals in a soft pastel palette
+            const crystalColors = [0x5eead4, 0x818cf8, 0x67e8f9, 0xa5b4fc, 0x99f6e4];
+            const crystalGroup = new THREE.Group();
+            const crystalCount = 8;
 
-            const particlesCount = 500;
+            for (let i = 0; i < crystalCount; i++) {
+                const size = 1.1 + Math.random() * 1.7;
+                const geometry = new THREE.IcosahedronGeometry(size, 0);
+                const color = crystalColors[i % crystalColors.length];
+
+                const material = new THREE.MeshStandardMaterial({
+                    color: color,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.5,
+                    roughness: 0.35,
+                    metalness: 0.5
+                });
+
+                const mesh = new THREE.Mesh(geometry, material);
+                const angle = (i / crystalCount) * Math.PI * 2;
+                const radius = 9 + Math.random() * 7;
+                mesh.position.set(
+                    Math.cos(angle) * radius,
+                    (Math.random() - 0.5) * 11,
+                    Math.sin(angle) * radius - 6
+                );
+                mesh.userData = {
+                    floatSpeed: 0.25 + Math.random() * 0.35,
+                    floatOffset: Math.random() * Math.PI * 2,
+                    rotSpeedX: (Math.random() - 0.5) * 0.005,
+                    rotSpeedY: (Math.random() - 0.5) * 0.007,
+                    baseY: mesh.position.y
+                };
+                crystalGroup.add(mesh);
+                crystals.push(mesh);
+            }
+            scene.add(crystalGroup);
+
+            // Soft drifting star-dust particles
+            const particlesCount = 450;
             const posArray = new Float32Array(particlesCount * 3);
             for(let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 60;
+                posArray[i] = (Math.random() - 0.5) * 70;
             }
             const particlesGeo = new THREE.BufferGeometry();
             particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             const particlesMat = new THREE.PointsMaterial({
-                size: 0.18,
-                color: 0x34d399,
+                size: 0.14,
+                color: 0xc7d2fe,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.5
             });
             particlesMesh = new THREE.Points(particlesGeo, particlesMat);
             scene.add(particlesMesh);
 
             window.addEventListener('resize', onWindowResize);
+            window.addEventListener('mousemove', onMouseMove3D);
             animate();
+        }
+
+        function onMouseMove3D(e) {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
         }
 
         function animate() {
             requestAnimationFrame(animate);
-            if(cyberMesh) {
-                cyberMesh.rotation.x += 0.002;
-                cyberMesh.rotation.y += 0.003;
-            }
+            const t = clock3D.getElapsedTime();
+
+            crystals.forEach(mesh => {
+                const d = mesh.userData;
+                mesh.rotation.x += d.rotSpeedX;
+                mesh.rotation.y += d.rotSpeedY;
+                mesh.position.y = d.baseY + Math.sin(t * d.floatSpeed + d.floatOffset) * 1.3;
+            });
+
             if(particlesMesh) {
-                particlesMesh.rotation.y -= 0.0008;
+                particlesMesh.rotation.y += 0.0005;
             }
+
+            // Gentle parallax follow — subtle, not jumpy
+            camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
             renderer.render(scene, camera);
         }
 
