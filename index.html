@@ -176,7 +176,7 @@
             </div>
 
             <h2 class="text-3xl md:text-6xl font-black text-white leading-tight mb-6 max-w-4xl" data-i18n="heroTitle">
-                أنظمة برمجية خارقة وهندسة شبكات <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500">فائقة القوة والتأمين</span>
+                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500">بمعايير المستقبل</span>
             </h2>
 
             <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="heroDesc">
@@ -202,7 +202,7 @@
                 </p>
             </div>
 
-            <!-- Booking Form (Pre-filled with User Data) -->
+            <!-- Booking Form -->
             <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
                 
                 <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
@@ -211,7 +211,7 @@
 
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
-                    <input type="text" name="name" required value="الكتاب" placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                    <input type="text" name="name" required value="مشروع المستقبل" placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
                 </div>
 
                 <div>
@@ -245,7 +245,7 @@
 
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="msgLabel">تفاصيل النظام أو المشروع التقني</label>
-                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">مرحباً، أود حجز موعد استشاري لمشروع الكتاب الخاص بي.</textarea>
+                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">مرحباً، أود حجز موعد استشاري لتطوير نظام برمجي متقدم وواجهة تفاعلية بمعايير المستقبل.</textarea>
                 </div>
 
                 <button type="submit" id="submit-btn" onclick="playClickSound()" class="elite-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
@@ -277,7 +277,6 @@
 
     <!-- Script for Pink Cyber 3D Core & Interactive Booking Logic -->
     <script>
-        // Web Audio API for interactive click sound
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playClickSound() {
             try {
@@ -304,7 +303,7 @@
                 subtitle: "Elite Pink Cyber Architecture",
                 bookBtn: "حجز استشارة فورية",
                 badge: "منصة هندسة النظم المتقدمة والأمن السيبراني 2026",
-                heroTitle: "أنظمة برمجية خارقة وهندسة شبكات <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">فائقة القوة والتأمين</span>",
+                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">بمعايير المستقبل</span>",
                 heroDesc: "حلول رقمية هجومية ودفاعية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك المطلقة.",
                 ctaPrimary: "ابدأ حجز استشارتك الآن",
                 modalTitle: "نظام الحجز السيبراني الذكي",
@@ -329,7 +328,7 @@
                 subtitle: "Elite Pink Cyber Architecture",
                 bookBtn: "Book Instant Consult",
                 badge: "Advanced Systems Engineering & Cyber Security 2026",
-                heroTitle: "Extreme Software Systems & Network Engineering <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">with Maximum Security</span>",
+                heroTitle: "We Build Next-Gen Software Systems & Interactive Interfaces <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">with Future Standards</span>",
                 heroDesc: "Offensive & defensive digital solutions, advanced server architecture, and flawless code to secure your project's absolute dominance.",
                 ctaPrimary: "Start Consultation Booking Now",
                 modalTitle: "Elite Cyber Booking System",
@@ -413,7 +412,6 @@
             purpleLight.position.set(-18, -15, 16);
             scene.add(purpleLight);
 
-            // Pink & Purple Cyber Geometries
             const geometries = [
                 new THREE.TorusKnotGeometry(1.2, 0.35, 64, 16),
                 new THREE.DodecahedronGeometry(1.4, 0),
@@ -459,7 +457,6 @@
             }
             scene.add(group);
 
-            // Pink Cyber Particles Grid
             const pCount = 550;
             const posArray = new Float32Array(pCount * 3);
             for(let i = 0; i < pCount * 3; i++) {
@@ -595,7 +592,7 @@
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> ' + (currentLang === 'ar' ? 'جاري تأكيد الحجز...' : 'Processing Booking...');
 
             const formData = new FormData(form);
-            formData.set('subject', `حجز موعد كتاب جديد (${selectedDate} - ${selectedTime})`);
+            formData.set('subject', `حجز موعد جديد (${selectedDate} - ${selectedTime})`);
             
             try {
                 await fetch('https://api.web3forms.com/submit', {
