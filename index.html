@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archx_co | Elite Pink Cyber & Systems Core</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Three.js (3D Interactive Engine) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
@@ -138,10 +133,8 @@
 </head>
 <body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-pink-500 selection:text-white">
 
-    <!-- Interactive Pink Cyber 3D Canvas -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Header -->
     <header class="w-full max-w-7xl mx-auto p-4 md:p-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-3 cursor-pointer group" onclick="playClickSound(); window.scrollTo({top: 0, behavior: 'smooth'})">
             <div class="w-12 h-12 rounded-xl elite-panel flex items-center justify-center border border-pink-500/50 shadow-xl group-hover:border-purple-400 transition">
@@ -165,10 +158,8 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="w-full max-w-5xl mx-auto px-4 py-8 flex flex-col gap-16 relative z-10">
 
-        <!-- Hero Section -->
         <section class="text-center py-10 md:py-16 flex flex-col items-center">
             <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full elite-panel text-pink-300 text-xs font-bold mb-6 border border-pink-500/40 shadow-lg">
                 <span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span>
@@ -189,7 +180,6 @@
             </button>
         </section>
 
-        <!-- Booking Section -->
         <section id="booking-section" class="elite-panel p-6 md:p-12 rounded-[2.5rem] border border-pink-500/40 shadow-2xl">
             
             <div class="mb-8 text-center md:text-left" id="booking-header-container">
@@ -202,7 +192,6 @@
                 </p>
             </div>
 
-            <!-- Booking Form -->
             <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
                 
                 <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
@@ -211,12 +200,12 @@
 
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="nameLabel">Your Full Name *</label>
-                    <input type="text" id="name-input" name="name" required value="Future Project" placeholder="Enter your full name" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                    <input type="text" id="name-input" name="name" required placeholder="Enter your full name" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="phoneLabel">Phone / WhatsApp Number (No Email Required) *</label>
-                    <input type="tel" name="phone" required value="00962790000000" placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
+                    <input type="tel" name="phone" required placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -234,18 +223,16 @@
                     </div>
                 </div>
 
-                <!-- Interactive Time Slots -->
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-2" data-i18n="timeLabel">Select Time Slot (Booked slots are struck through) *</label>
                     <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                        <!-- Populated via JS -->
                     </div>
                     <input type="hidden" id="selected-time-input" name="booking_time" required>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="msgLabel">System & Project Details</label>
-                    <textarea name="message" id="msg-textarea" rows="3" placeholder="Type your system details, design requirements, or project idea..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">Hello, I would like to book a consultation appointment to develop an advanced web design and interactive interface with future standards.</textarea>
+                    <textarea name="message" id="msg-textarea" rows="3" placeholder="Type your system details, design requirements, or project idea..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder"></textarea>
                 </div>
 
                 <button type="submit" id="submit-btn" onclick="playClickSound()" class="elite-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
@@ -254,7 +241,6 @@
                 </button>
             </form>
 
-            <!-- Success Alert -->
             <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-slate-950 border border-pink-500 text-pink-300 text-center text-xs font-bold">
                 <i class="fa-solid fa-circle-check text-xl mb-1 block text-pink-400"></i>
                 <span data-i18n="successMsg">Booking Successful! Your elite appointment has been secured.</span>
@@ -264,7 +250,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 elite-panel rounded-2xl mb-4 gap-4">
         <div data-i18n="footer">&copy; 2026 Archx.core. All rights reserved.</div>
         <div class="flex items-center gap-4">
@@ -275,7 +260,6 @@
         </div>
     </footer>
 
-    <!-- Script for Pink Cyber 3D Core & Interactive Booking Logic -->
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playClickSound() {
@@ -297,7 +281,6 @@
             } catch(e) {}
         }
 
-        // Bilingual translations dictionary
         const translations = {
             ar: {
                 subtitle: "Elite Pink Cyber Architecture",
@@ -309,14 +292,14 @@
                 modalTitle: "نظام الحجز الرقمي الذكي",
                 modalDesc: "اختر التاريخ والساعة بدقة. المواعيد المحجوزة يتم شطبها فورياً ولا يمكن حجزها مرة أخرى!",
                 nameLabel: "اسمك الكريم *",
-                namePlaceholder: "أدخل اسمك الكامل",
+                namePlaceholder: "مشروع المستقبل",
                 phoneLabel: "رقم الهاتف / الواتساب (بدون إيميل) *",
                 phonePlaceholder: "00962xxxxxxxx",
                 serviceLabel: "نوع الخدمة المتقدمة",
                 dateLabel: "تاريخ الموعد *",
                 timeLabel: "اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *",
                 msgLabel: "تفاصيل الموقع أو المشروع التقني",
-                msgPlaceholder: "اكتب تفاصيل موقعك، متطلبات التصميم، أو فكرة مشروعك...",
+                msgPlaceholder: "مرحباً، أود حجز موعد استشاري لتطوير تصميم مواقع وتطبيقات تفاعلية بمعايير المستقبل.",
                 submitBtn: "تأكيد حجز الموعد وإرساله",
                 successMsg: "Booking Successful! Your elite appointment has been secured.",
                 opt1: "تصميم واجهات وتطبيقات الويب المتقدمة (UI/UX)",
@@ -341,7 +324,7 @@
                 dateLabel: "Appointment Date *",
                 timeLabel: "Select Time Slot (Booked slots are struck through) *",
                 msgLabel: "System & Project Details",
-                msgPlaceholder: "Type your website details, design requirements, or project idea...",
+                msgPlaceholder: "Type your system details, design requirements, or project idea...",
                 submitBtn: "Confirm & Send Appointment",
                 successMsg: "Booking Successful! Your elite appointment has been secured.",
                 opt1: "Advanced Web Design & UI/UX",
@@ -351,7 +334,6 @@
             }
         };
 
-        // تعيين اللغة الافتراضية إلى الإنجليزية مباشرة عند الفتح
         let currentLang = 'en';
 
         function toggleLanguage() {
@@ -365,13 +347,9 @@
             if (currentLang === 'en') {
                 bookingHeader.classList.remove('md:text-right');
                 bookingHeader.classList.add('md:text-left');
-                document.getElementById('name-input').value = "Future Project";
-                document.getElementById('msg-textarea').value = "Hello, I would like to book a consultation appointment to develop an advanced web design and interactive interface with future standards.";
             } else {
                 bookingHeader.classList.remove('md:text-left');
                 bookingHeader.classList.add('md:text-right');
-                document.getElementById('name-input').value = "مشروع المستقبل";
-                document.getElementById('msg-textarea').value = "مرحباً، أود حجز موعد استشاري لتطوير تصميم مواقع وتطبيقات تفاعلية بمعايير المستقبل.";
             }
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -389,7 +367,6 @@
             });
         }
 
-        // Three.js Pink Cyber Core 3D Background
         let scene, camera, renderer, cyberParticles, cyberMeshes = [];
         let mouseX = 0, mouseY = 0;
         const clock3D = new THREE.Clock();
@@ -516,7 +493,6 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         }
 
-        // Booking System Logic
         const availableTimes = ["10:00 AM", "11:30 AM", "01:00 PM", "03:30 PM", "05:00 PM", "07:00 PM", "08:30 PM", "10:00 PM"];
 
         function setDefaultDate() {
