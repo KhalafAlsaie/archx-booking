@@ -84,7 +84,6 @@
             filter: brightness(1.1);
         }
 
-        /* Time slot styling with explicit line-through for booked ones */
         .time-slot-btn {
             background: rgba(19, 28, 56, 0.9);
             border: 1px solid rgba(59, 130, 246, 0.3);
@@ -135,7 +134,6 @@
 </head>
 <body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Interactive 3D Background Canvas -->
     <canvas id="webgl-canvas"></canvas>
 
     <!-- Header -->
@@ -186,7 +184,7 @@
             </button>
         </section>
 
-        <!-- Booking Section with Persistent Strikethrough Time Slots -->
+        <!-- Booking Section -->
         <section id="booking-section" class="glass-panel p-6 md:p-12 rounded-[2.5rem] border border-emerald-500/30 shadow-2xl">
             
             <div class="mb-8 text-center md:text-right" id="booking-header-container">
@@ -203,6 +201,7 @@
             <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
                 
                 <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
+                <input type="hidden" name="email" value="klf34762@gmail.com">
                 <input type="hidden" name="subject" value="حجز موعد جديد عبر موقع Archx.dev">
                 <input type="hidden" name="from_name" value="منصة Archx.dev">
 
@@ -231,12 +230,9 @@
                     </div>
                 </div>
 
-                <!-- Interactive Time Slots (Strikethrough Enabled) -->
                 <div>
                     <label class="block text-xs font-bold text-emerald-200/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
-                    <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                        <!-- Populated via JS -->
-                    </div>
+                    <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
                     <input type="hidden" id="selected-time-input" name="booking_time" required>
                 </div>
 
@@ -251,7 +247,6 @@
                 </button>
             </form>
 
-            <!-- Success Alert (Private to user UI, English message requested) -->
             <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/90 border border-emerald-500 text-emerald-200 text-center text-xs font-bold">
                 <i class="fa-solid fa-circle-check text-xl mb-1 block text-emerald-400"></i>
                 <span data-i18n="successMsg">Booking Successful! Your appointment has been secured privately.</span>
@@ -272,9 +267,8 @@
         </div>
     </footer>
 
-    <!-- Script for Sound, 3D, and Booking Logic -->
+    <!-- Script -->
     <script>
-        // Web Audio API for interactive click sound
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playClickSound() {
             try {
@@ -295,7 +289,6 @@
             } catch(e) {}
         }
 
-        // Bilingual translations dictionary
         const translations = {
             ar: {
                 subtitle: "Next-Gen Dev & Architecture",
@@ -382,7 +375,6 @@
             });
         }
 
-        // Professional Navy & Emerald Deep Three.js Background Animation
         let scene, camera, renderer, cyberMesh, particlesMesh;
 
         function init3D() {
@@ -407,7 +399,6 @@
             blueLight.position.set(-15, -15, 15);
             scene.add(blueLight);
 
-            // Geometric TorusKnot for developer tech vibe
             const geometry = new THREE.TorusKnotGeometry(5, 1.5, 128, 32);
             const material = new THREE.MeshStandardMaterial({
                 color: 0x10b981,
@@ -418,7 +409,6 @@
             cyberMesh = new THREE.Mesh(geometry, material);
             scene.add(cyberMesh);
 
-            // Emerald & Blue particles field
             const particlesCount = 500;
             const posArray = new Float32Array(particlesCount * 3);
             for(let i = 0; i < particlesCount * 3; i++) {
@@ -457,7 +447,6 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         }
 
-        // Advanced Persistent Booking System with Date-based Storage & Strikethrough
         const availableTimes = ["10:00 AM", "11:30 AM", "01:00 PM", "03:30 PM", "05:00 PM", "07:00 PM", "08:30 PM", "10:00 PM"];
 
         function setDefaultDate() {
@@ -498,7 +487,7 @@
                 btn.innerText = time;
                 
                 if (isBooked) {
-                    btn.disabled = true; // Strikethrough & unclickable
+                    btn.disabled = true;
                 } else {
                     btn.onclick = () => { playClickSound(); selectTimeSlot(time, btn); };
                 }
@@ -525,7 +514,6 @@
                 return;
             }
 
-            // Save booking permanently for this specific date
             const bookings = getStoredBookings();
             if(!bookings[selectedDate]) {
                 bookings[selectedDate] = [];
@@ -542,7 +530,6 @@
             formData.set('subject', `حجز موعد برمجي جديد (${selectedDate} - ${selectedTime})`);
             
             try {
-                // Private backend submission (hidden from client email notification)
                 await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData
