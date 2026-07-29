@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archx_co | Next-Gen Dev & 3D Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Three.js (3D Interactive Engine) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyDark: '#0b1329',
+                        navyCard: '#131c38',
+                        emeraldAccent: '#10b981',
+                        navyBlue: '#1e3a8a',
+                        navyLight: '#3b82f6'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b1329;
+            color: #f1f5f9;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        [dir="ltr"] body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        #webgl-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            outline: none;
+        }
+
+        .glass-panel {
+            background: rgba(19, 28, 56, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.05);
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            font-weight: 800;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.55);
+            filter: brightness(1.1);
+        }
+
+        /* Time slot styling with explicit line-through for booked ones */
+        .time-slot-btn {
+            background: rgba(19, 28, 56, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot-btn:hover:not(:disabled) {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.15);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+        }
+
+        .time-slot-btn.selected {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff;
+            border-color: #10b981;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .time-slot-btn:disabled {
+            background: rgba(239, 68, 68, 0.1) !important;
+            border-color: rgba(239, 68, 68, 0.3) !important;
+            color: #f87171 !important;
+            text-decoration: line-through !important;
+            text-decoration-thickness: 2px !important;
+            cursor: not-allowed !important;
+            opacity: 0.75;
+            box-shadow: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1329;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- Interactive 3D Background Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="w-full max-w-7xl mx-auto p-4 md:p-6 flex justify-between items-center relative z-10">
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="playClickSound(); window.scrollTo({top: 0, behavior: 'smooth'})">
+            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center border border-emerald-500/40 shadow-lg group-hover:border-emerald-400 transition">
+                <i class="fa-solid fa-code text-emerald-400 text-xl animate-pulse"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl font-black tracking-wider text-white">Archx<span class="text-emerald-400">.</span>dev</h1>
+                <p class="text-[10px] tracking-widest text-emerald-300/70 uppercase font-bold" data-i18n="subtitle">Next-Gen Dev & Architecture</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button onclick="playClickSound(); toggleLanguage();" class="glass-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-emerald-400 transition">
+                <i class="fa-solid fa-globe text-emerald-400"></i>
+                <span id="lang-label">EN</span>
+            </button>
+            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="primary-btn px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
+                <i class="fa-solid fa-terminal"></i>
+                <span data-i18n="bookBtn">احجز موعدك</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-5xl mx-auto px-4 py-8 flex flex-col gap-16 relative z-10">
+
+        <!-- Hero Section -->
+        <section class="text-center py-10 md:py-16 flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-emerald-300 text-xs font-bold mb-6 border border-emerald-500/30 shadow-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span data-i18n="badge">منصة البرمجة وتطوير الواجهات الذكية 2026</span>
+            </div>
+
+            <h2 class="text-3xl md:text-6xl font-black text-white leading-tight mb-6 max-w-4xl" data-i18n="heroTitle">
+                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500">بمعايير المستقبل</span>
+            </h2>
+
+            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="heroDesc">
+                حلول رقمية متطورة، أكواد نظيفة، وهندسة برمجية ثلاثية الأبعاد تضع مشروعك في قمة التنافسية العالمية.
+            </p>
+
+            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="primary-btn px-10 py-4 rounded-2xl text-sm flex items-center gap-3">
+                <span data-i18n="ctaPrimary">ابدأ حجز استشارتك</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </button>
+        </section>
+
+        <!-- Booking Section with Persistent Strikethrough Time Slots -->
+        <section id="booking-section" class="glass-panel p-6 md:p-12 rounded-[2.5rem] border border-emerald-500/30 shadow-2xl">
+            
+            <div class="mb-8 text-center md:text-right" id="booking-header-container">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-3 border border-emerald-500/30 mx-auto md:mx-0">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">نظام الحجز الذكي والمواعيد</h3>
+                <p class="text-xs text-emerald-200/80 mt-1" data-i18n="modalDesc">
+                    اختر التاريخ والساعة المناسبة. المواعيد المحجوزة ستظهر خطاً عليها ولا يمكن حجزها مجدداً، ويتم حفظ كل يوم بشكل مستقل!
+                </p>
+            </div>
+
+            <!-- Booking Form -->
+            <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
+                
+                <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
+                <input type="hidden" name="subject" value="حجز موعد جديد عبر موقع Archx.dev">
+                <input type="hidden" name="from_name" value="منصة Archx.dev">
+
+                <div>
+                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
+                    <input type="text" name="name" required placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
+                    <input type="tel" name="phone" required placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المطلوبة</label>
+                        <select name="service_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition">
+                            <option value="تطوير منصة ويب متكاملة" data-i18n="opt1">تطوير منصة ويب متكاملة</option>
+                            <option value="برمجة واجهات 3D تفاعلية" data-i18n="opt2">برمجة واجهات 3D تفاعلية</option>
+                            <option value="استشارة برمجية وتطويرية" data-i18n="opt3">استشارة برمجية وتطويرية</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
+                        <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition">
+                    </div>
+                </div>
+
+                <!-- Interactive Time Slots (Strikethrough Enabled) -->
+                <div>
+                    <label class="block text-xs font-bold text-emerald-200/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
+                    <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <!-- Populated via JS -->
+                    </div>
+                    <input type="hidden" id="selected-time-input" name="booking_time" required>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-emerald-200/90 mb-1.5" data-i18n="msgLabel">تفاصيل وملاحظات المشروع</label>
+                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل مشروعك أو فكرتك البرمجية..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-emerald-400 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder"></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" onclick="playClickSound()" class="primary-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-code-commit"></i>
+                    <span data-i18n="submitBtn">تأكيد حجز الموعد وإرساله</span>
+                </button>
+            </form>
+
+            <!-- Success Alert (Private to user UI, English message requested) -->
+            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/90 border border-emerald-500 text-emerald-200 text-center text-xs font-bold">
+                <i class="fa-solid fa-circle-check text-xl mb-1 block text-emerald-400"></i>
+                <span data-i18n="successMsg">Booking Successful! Your appointment has been secured privately.</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 glass-panel rounded-2xl mb-4 gap-4">
+        <div data-i18n="footer">&copy; 2026 Archx.dev. جميع الحقوق محفوظة.</div>
+        <div class="flex items-center gap-4">
+            <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-emerald-400 transition font-bold">
+                <i class="fa-brands fa-instagram text-base text-emerald-400"></i>
+                <span id="instagram-text">Archx_co</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script for Sound, 3D, and Booking Logic -->
+    <script>
+        // Web Audio API for interactive click sound
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playClickSound() {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.05);
+                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.05);
+            } catch(e) {}
+        }
+
+        // Bilingual translations dictionary
+        const translations = {
+            ar: {
+                subtitle: "Next-Gen Dev & Architecture",
+                bookBtn: "احجز موعدك",
+                badge: "منصة البرمجة وتطوير الواجهات الذكية 2026",
+                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500\">بمعايير المستقبل</span>",
+                heroDesc: "حلول رقمية متطورة، أكواد نظيفة، وهندسة برمجية ثلاثية الأبعاد تضع مشروعك في قمة التنافسية العالمية.",
+                ctaPrimary: "ابدأ حجز استشارتك",
+                modalTitle: "نظام الحجز الذكي والمواعيد",
+                modalDesc: "اختر التاريخ والساعة المناسبة. المواعيد المحجوزة ستظهر خطاً عليها ولا يمكن حجزها مجدداً، ويتم حفظ كل يوم بشكل مستقل!",
+                nameLabel: "اسمك الكريم *",
+                namePlaceholder: "أدخل اسمك الكامل",
+                phoneLabel: "رقم الهاتف / الواتساب (بدون إيميل) *",
+                phonePlaceholder: "00962xxxxxxxx",
+                serviceLabel: "نوع الخدمة المطلوبة",
+                dateLabel: "تاريخ الموعد *",
+                timeLabel: "اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *",
+                msgLabel: "تفاصيل وملاحظات المشروع",
+                msgPlaceholder: "اكتب تفاصيل مشروعك أو فكرتك البرمجية...",
+                submitBtn: "تأكيد حجز الموعد وإرساله",
+                successMsg: "Booking Successful! Your appointment has been secured privately.",
+                opt1: "تطوير منصة ويب متكاملة",
+                opt2: "برمجة واجهات 3D تفاعلية",
+                opt3: "استشارة برمجية وتطويرية",
+                footer: "&copy; 2026 Archx.dev. جميع الحقوق محفوظة."
+            },
+            en: {
+                subtitle: "Next-Gen Dev & Architecture",
+                bookBtn: "Book Slot",
+                badge: "Next-Gen Development & Smart UI Platform 2026",
+                heroTitle: "Building Software Systems & Interactive UIs <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500\">with Future Standards</span>",
+                heroDesc: "Advanced digital solutions, clean code, and 3D architectural engineering that elevate your project to global competitiveness.",
+                ctaPrimary: "Start Consultation Booking",
+                modalTitle: "Smart Booking & Appointment System",
+                modalDesc: "Select your preferred date & time. Booked slots show a strikethrough and cannot be re-booked. Each day is saved independently!",
+                nameLabel: "Your Full Name *",
+                namePlaceholder: "Enter your full name",
+                phoneLabel: "Phone / WhatsApp Number (No Email Required) *",
+                phonePlaceholder: "00962xxxxxxxx",
+                serviceLabel: "Required Service",
+                dateLabel: "Appointment Date *",
+                timeLabel: "Select Time Slot (Booked slots are struck through) *",
+                msgLabel: "Project Notes & Details",
+                msgPlaceholder: "Type your project details or software idea...",
+                submitBtn: "Confirm & Send Appointment",
+                successMsg: "Booking Successful! Your appointment has been secured privately.",
+                opt1: "Full-Stack Web Platform Development",
+                opt2: "Interactive 3D UI Programming",
+                opt3: "Software & Development Consultation",
+                footer: "&copy; 2026 Archx.dev. All rights reserved."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlRoot = document.getElementById('html-root');
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            htmlRoot.setAttribute('lang', currentLang);
+            document.getElementById('lang-label').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+            
+            const bookingHeader = document.getElementById('booking-header-container');
+            if (currentLang === 'en') {
+                bookingHeader.classList.remove('md:text-right');
+                bookingHeader.classList.add('md:text-left');
+            } else {
+                bookingHeader.classList.remove('md:text-left');
+                bookingHeader.classList.add('md:text-right');
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Professional Navy & Emerald Deep Three.js Background Animation
+        let scene, camera, renderer, cyberMesh, particlesMesh;
+
+        function init3D() {
+            const canvas = document.getElementById('webgl-canvas');
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 24;
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const emeraldLight = new THREE.PointLight(0x10b981, 4, 70);
+            emeraldLight.position.set(15, 15, 15);
+            scene.add(emeraldLight);
+
+            const blueLight = new THREE.PointLight(0x3b82f6, 4, 70);
+            blueLight.position.set(-15, -15, 15);
+            scene.add(blueLight);
+
+            // Geometric TorusKnot for developer tech vibe
+            const geometry = new THREE.TorusKnotGeometry(5, 1.5, 128, 32);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x10b981,
+                wireframe: true,
+                roughness: 0.1,
+                metalness: 0.95
+            });
+            cyberMesh = new THREE.Mesh(geometry, material);
+            scene.add(cyberMesh);
+
+            // Emerald & Blue particles field
+            const particlesCount = 500;
+            const posArray = new Float32Array(particlesCount * 3);
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 60;
+            }
+            const particlesGeo = new THREE.BufferGeometry();
+            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMat = new THREE.PointsMaterial({
+                size: 0.18,
+                color: 0x34d399,
+                transparent: true,
+                opacity: 0.85
+            });
+            particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+            scene.add(particlesMesh);
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(cyberMesh) {
+                cyberMesh.rotation.x += 0.002;
+                cyberMesh.rotation.y += 0.003;
+            }
+            if(particlesMesh) {
+                particlesMesh.rotation.y -= 0.0008;
+            }
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Advanced Persistent Booking System with Date-based Storage & Strikethrough
+        const availableTimes = ["10:00 AM", "11:30 AM", "01:00 PM", "03:30 PM", "05:00 PM", "07:00 PM", "08:30 PM", "10:00 PM"];
+
+        function setDefaultDate() {
+            const dateInput = document.getElementById('booking-date-input');
+            const todayStr = new Date().toISOString().split('T')[0];
+            dateInput.min = todayStr;
+            if(!dateInput.value) {
+                dateInput.value = todayStr;
+            }
+        }
+
+        function getStoredBookings() {
+            try {
+                return JSON.parse(localStorage.getItem('archx_dev_bookings_v2') || '{}');
+            } catch(e) {
+                return {};
+            }
+        }
+
+        function saveStoredBookings(bookings) {
+            localStorage.setItem('archx_dev_bookings_v2', JSON.stringify(bookings));
+        }
+
+        function renderTimeSlots() {
+            const dateInput = document.getElementById('booking-date-input').value;
+            const container = document.getElementById('slots-container');
+            container.innerHTML = '';
+            document.getElementById('selected-time-input').value = '';
+
+            const bookings = getStoredBookings();
+            const bookedTimesForDate = bookings[dateInput] || [];
+
+            availableTimes.forEach(time => {
+                const isBooked = bookedTimesForDate.includes(time);
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `time-slot-btn py-3 rounded-xl text-xs font-bold transition`;
+                btn.innerText = time;
+                
+                if (isBooked) {
+                    btn.disabled = true; // Strikethrough & unclickable
+                } else {
+                    btn.onclick = () => { playClickSound(); selectTimeSlot(time, btn); };
+                }
+                container.appendChild(btn);
+            });
+        }
+
+        function selectTimeSlot(time, btnElement) {
+            document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('selected'));
+            btnElement.classList.add('selected');
+            document.getElementById('selected-time-input').value = time;
+        }
+
+        async function sendBookingData(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const alertBox = document.getElementById('success-alert');
+            const selectedDate = form.booking_date.value;
+            const selectedTime = document.getElementById('selected-time-input').value;
+
+            if(!selectedTime) {
+                alert(currentLang === 'ar' ? 'الرجاء اختيار وقت الموعد!' : 'Please select a time slot!');
+                return;
+            }
+
+            // Save booking permanently for this specific date
+            const bookings = getStoredBookings();
+            if(!bookings[selectedDate]) {
+                bookings[selectedDate] = [];
+            }
+            if(!bookings[selectedDate].includes(selectedTime)) {
+                bookings[selectedDate].push(selectedTime);
+            }
+            saveStoredBookings(bookings);
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> ' + (currentLang === 'ar' ? 'جاري تأكيد الحجز...' : 'Processing Booking...');
+
+            const formData = new FormData(form);
+            formData.set('subject', `حجز موعد برمجي جديد (${selectedDate} - ${selectedTime})`);
+            
+            try {
+                // Private backend submission (hidden from client email notification)
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                alertBox.classList.remove('hidden');
+                form.reset();
+                setDefaultDate();
+                renderTimeSlots(); 
+                submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> ' + (currentLang === 'ar' ? 'تم الحجز بنجاح' : 'Booking Successful');
+                
+                setTimeout(() => {
+                    alertBox.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-code-commit"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
+                }, 5000);
+            } catch (error) {
+                alertBox.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-code-commit"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            init3D();
+            setDefaultDate();
+            renderTimeSlots();
+        });
+    </script>
+</body>
+</html>
