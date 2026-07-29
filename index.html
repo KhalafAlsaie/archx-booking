@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archx_co | Next-Gen Dev & 3D Studio</title>
+    <title>Archx_co | Elite Pink Cyber & Systems Core</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,11 +20,11 @@
             theme: {
                 extend: {
                     colors: {
-                        navyDark: '#0b1329',
-                        navyCard: '#131c38',
-                        emeraldAccent: '#10b981',
-                        navyBlue: '#1e3a8a',
-                        navyLight: '#3b82f6'
+                        coreDark: '#07050a',
+                        corePanel: '#130d1a',
+                        pinkNeon: '#ec4899',
+                        magentaGlow: '#d946ef',
+                        electricPurple: '#a855f7'
                     },
                     fontFamily: {
                         cairo: ['Cairo', 'sans-serif'],
@@ -42,8 +42,8 @@
         }
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #0b1329;
-            color: #f1f5f9;
+            background-color: #07050a;
+            color: #f3f4f6;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -62,101 +62,105 @@
             outline: none;
         }
 
-        .glass-panel {
-            background: rgba(19, 28, 56, 0.75);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(94, 234, 212, 0.18);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(129, 140, 248, 0.06);
+        .elite-panel {
+            background: rgba(19, 13, 26, 0.88);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 45px rgba(236, 72, 153, 0.15);
         }
 
-        .primary-btn {
-            background: linear-gradient(135deg, #5eead4 0%, #818cf8 100%);
-            color: #0b1329;
-            font-weight: 800;
-            box-shadow: 0 10px 25px -5px rgba(129, 140, 248, 0.35);
+        .elite-btn {
+            background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+            color: #ffffff;
+            font-weight: 900;
+            box-shadow: 0 12px 30px -5px rgba(236, 72, 153, 0.5);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(129, 140, 248, 0.5);
-            filter: brightness(1.05);
+        .elite-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 20px 40px -5px rgba(168, 85, 247, 0.7);
+            filter: brightness(1.2);
         }
 
         .time-slot-btn {
-            background: rgba(19, 28, 56, 0.9);
-            border: 1px solid rgba(129, 140, 248, 0.3);
-            color: #cbd5e1;
-            transition: all 0.2s ease;
+            background: rgba(19, 13, 26, 0.9);
+            border: 1px solid rgba(217, 70, 239, 0.3);
+            color: #d1d5db;
+            transition: all 0.25s ease;
+            font-weight: 700;
         }
 
         .time-slot-btn:hover:not(:disabled) {
-            border-color: #5eead4;
-            background: rgba(94, 234, 212, 0.12);
+            border-color: #ec4899;
+            background: rgba(236, 72, 153, 0.18);
             color: #ffffff;
-            box-shadow: 0 0 15px rgba(94, 234, 212, 0.2);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
         }
 
         .time-slot-btn.selected {
-            background: linear-gradient(135deg, #5eead4, #818cf8);
-            color: #0b1329;
-            border-color: #5eead4;
-            font-weight: 800;
-            box-shadow: 0 0 20px rgba(129, 140, 248, 0.35);
+            background: linear-gradient(135deg, #ec4899, #a855f7);
+            color: #ffffff;
+            border-color: #ffffff;
+            font-weight: 900;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.7);
         }
 
         .time-slot-btn:disabled {
-            background: rgba(239, 68, 68, 0.1) !important;
-            border-color: rgba(239, 68, 68, 0.3) !important;
+            background: rgba(239, 68, 68, 0.12) !important;
+            border-color: rgba(239, 68, 68, 0.35) !important;
             color: #f87171 !important;
             text-decoration: line-through !important;
             text-decoration-thickness: 2px !important;
             cursor: not-allowed !important;
-            opacity: 0.75;
+            opacity: 0.7;
             box-shadow: none !important;
+            transform: none !important;
         }
 
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0b1329;
+            background: #07050a;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;
+            background: #2b1b3d;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #5eead4;
+            background: #ec4899;
         }
     </style>
 </head>
-<body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-indigo-400 selection:text-slate-950">
+<body class="w-full min-h-screen relative flex flex-col justify-between selection:bg-pink-500 selection:text-white">
 
-    <!-- Interactive 3D Background Canvas -->
+    <!-- Interactive Pink Cyber 3D Canvas -->
     <canvas id="webgl-canvas"></canvas>
 
     <!-- Header -->
     <header class="w-full max-w-7xl mx-auto p-4 md:p-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-3 cursor-pointer group" onclick="playClickSound(); window.scrollTo({top: 0, behavior: 'smooth'})">
-            <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center border border-indigo-400/40 shadow-lg group-hover:border-teal-300 transition">
-                <i class="fa-solid fa-code text-teal-300 text-xl animate-pulse"></i>
+            <div class="w-12 h-12 rounded-xl elite-panel flex items-center justify-center border border-pink-500/50 shadow-xl group-hover:border-purple-400 transition">
+                <i class="fa-solid fa-shield-cat text-pink-500 text-xl animate-pulse"></i>
             </div>
             <div>
-                <h1 class="text-2xl font-black tracking-wider text-white">Archx<span class="text-teal-300">.</span>dev</h1>
-                <p class="text-[10px] tracking-widest text-teal-200/70 uppercase font-bold" data-i18n="subtitle">Next-Gen Dev & Architecture</p>
+                <h1 class="text-2xl font-black tracking-wider text-white">Archx<span class="text-pink-500">.</span>core</h1>
+                <p class="text-[10px] tracking-widest text-purple-300 uppercase font-bold" data-i18n="subtitle">Elite Pink Cyber Architecture</p>
             </div>
         </div>
 
         <div class="flex items-center gap-3">
-            <button onclick="playClickSound(); toggleLanguage();" class="glass-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-teal-300 transition">
-                <i class="fa-solid fa-globe text-teal-300"></i>
+            <button onclick="playClickSound(); toggleLanguage();" class="elite-panel text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 hover:border-pink-500 transition">
+                <i class="fa-solid fa-globe text-pink-500"></i>
                 <span id="lang-label">EN</span>
             </button>
-            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="primary-btn px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
-                <i class="fa-solid fa-terminal"></i>
-                <span data-i18n="bookBtn">احجز موعدك</span>
+            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="elite-btn px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
+                <i class="fa-solid fa-bolt"></i>
+                <span data-i18n="bookBtn">حجز استشارة فورية</span>
             </button>
         </div>
     </header>
@@ -166,73 +170,73 @@
 
         <!-- Hero Section -->
         <section class="text-center py-10 md:py-16 flex flex-col items-center">
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel text-teal-200 text-xs font-bold mb-6 border border-indigo-400/30 shadow-md">
-                <span class="w-2 h-2 rounded-full bg-teal-300 animate-ping"></span>
-                <span data-i18n="badge">منصة البرمجة وتطوير الواجهات الذكية 2026</span>
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full elite-panel text-pink-300 text-xs font-bold mb-6 border border-pink-500/40 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span>
+                <span data-i18n="badge">منصة هندسة النظم المتقدمة والأمن السيبراني 2026</span>
             </div>
 
             <h2 class="text-3xl md:text-6xl font-black text-white leading-tight mb-6 max-w-4xl" data-i18n="heroTitle">
-                نصنع لك أنظمة برمجية وواجهات تفاعلية <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500">بمعايير المستقبل</span>
+                أنظمة برمجية خارقة وهندسة شبكات <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500">فائقة القوة والتأمين</span>
             </h2>
 
             <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="heroDesc">
-                حلول رقمية متطورة، أكواد نظيفة، وهندسة برمجية ثلاثية الأبعاد تضع مشروعك في قمة التنافسية العالمية.
+                حلول رقمية هجومية ودفاعية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك المطلقة.
             </p>
 
-            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="primary-btn px-10 py-4 rounded-2xl text-sm flex items-center gap-3">
-                <span data-i18n="ctaPrimary">ابدأ حجز استشارتك</span>
+            <button onclick="playClickSound(); document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})" class="elite-btn px-10 py-4 rounded-2xl text-sm flex items-center gap-3">
+                <span data-i18n="ctaPrimary">ابدأ حجز استشارتك الآن</span>
                 <i class="fa-solid fa-arrow-down"></i>
             </button>
         </section>
 
         <!-- Booking Section -->
-        <section id="booking-section" class="glass-panel p-6 md:p-12 rounded-[2.5rem] border border-indigo-400/30 shadow-2xl">
+        <section id="booking-section" class="elite-panel p-6 md:p-12 rounded-[2.5rem] border border-pink-500/40 shadow-2xl">
             
             <div class="mb-8 text-center md:text-right" id="booking-header-container">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-400/10 text-teal-300 flex items-center justify-center text-xl mb-3 border border-indigo-400/30 mx-auto md:mx-0">
-                    <i class="fa-solid fa-calendar-check"></i>
+                <div class="w-12 h-12 rounded-2xl bg-pink-500/15 text-pink-500 flex items-center justify-center text-xl mb-3 border border-pink-500/40 mx-auto md:mx-0">
+                    <i class="fa-solid fa-microchip"></i>
                 </div>
-                <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">نظام الحجز الذكي والمواعيد</h3>
-                <p class="text-xs text-teal-100/80 mt-1" data-i18n="modalDesc">
-                    اختر التاريخ والساعة المناسبة. المواعيد المحجوزة ستظهر خطاً عليها ولا يمكن حجزها مجدداً، ويتم حفظ كل يوم بشكل مستقل!
+                <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">نظام الحجز السيبراني الذكي</h3>
+                <p class="text-xs text-slate-300/80 mt-1" data-i18n="modalDesc">
+                    اختر التاريخ والساعة بدقة. المواعيد المحجوزة يتم شطبها فورياً ولا يمكن حجزها مرة أخرى!
                 </p>
             </div>
 
-            <!-- Booking Form -->
+            <!-- Booking Form (Pre-filled with User Data) -->
             <form id="booking-form" onsubmit="sendBookingData(event)" class="space-y-5">
                 
                 <input type="hidden" name="access_key" value="11864788-ffc5-495c-9ce7-8247e3f784e5">
-                <input type="hidden" name="subject" value="حجز موعد جديد عبر موقع Archx.dev">
-                <input type="hidden" name="from_name" value="منصة Archx.dev">
+                <input type="hidden" name="subject" value="حجز موعد استشاري جديد عبر موقع Archx.core">
+                <input type="hidden" name="from_name" value="منصة Archx.core">
 
                 <div>
-                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
-                    <input type="text" name="name" required placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="nameLabel">اسمك الكريم *</label>
+                    <input type="text" name="name" required value="الكتاب" placeholder="أدخل اسمك الكامل" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="namePlaceholder">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
-                    <input type="tel" name="phone" required placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="phoneLabel">رقم الهاتف / الواتساب (بدون إيميل) *</label>
+                    <input type="tel" name="phone" required value="00962790000000" placeholder="00962xxxxxxxx" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="phonePlaceholder">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المطلوبة</label>
-                        <select name="service_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition">
-                            <option value="تطوير منصة ويب متكاملة" data-i18n="opt1">تطوير منصة ويب متكاملة</option>
-                            <option value="برمجة واجهات 3D تفاعلية" data-i18n="opt2">برمجة واجهات 3D تفاعلية</option>
-                            <option value="استشارة برمجية وتطويرية" data-i18n="opt3">استشارة برمجية وتطويرية</option>
+                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="serviceLabel">نوع الخدمة المتقدمة</label>
+                        <select name="service_type" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition">
+                            <option value="هندسة خوادم وأنظمة متقدمة" data-i18n="opt1">هندسة خوادم وأنظمة متقدمة</option>
+                            <option value="أمن سيبراني واختبار اختراق" data-i18n="opt2">أمن سيبراني واختبار اختراق</option>
+                            <option value="استشارة برمجية وهندسة معمارية" data-i18n="opt3">استشارة برمجية وهندسة معمارية</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
-                        <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition">
+                        <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="dateLabel">تاريخ الموعد *</label>
+                        <input type="date" id="booking-date-input" name="booking_date" required onchange="renderTimeSlots()" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition">
                     </div>
                 </div>
 
                 <!-- Interactive Time Slots -->
                 <div>
-                    <label class="block text-xs font-bold text-teal-100/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
+                    <label class="block text-xs font-bold text-pink-400/90 mb-2" data-i18n="timeLabel">اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *</label>
                     <div id="slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                         <!-- Populated via JS -->
                     </div>
@@ -240,20 +244,20 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-teal-100/90 mb-1.5" data-i18n="msgLabel">تفاصيل وملاحظات المشروع</label>
-                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل مشروعك أو فكرتك البرمجية..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-teal-300 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder"></textarea>
+                    <label class="block text-xs font-bold text-pink-400/90 mb-1.5" data-i18n="msgLabel">تفاصيل النظام أو المشروع التقني</label>
+                    <textarea name="message" rows="3" placeholder="اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-pink-500 text-white text-sm outline-none transition" data-i18n-placeholder="msgPlaceholder">مرحباً، أود حجز موعد استشاري لمشروع الكتاب الخاص بي.</textarea>
                 </div>
 
-                <button type="submit" id="submit-btn" onclick="playClickSound()" class="primary-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
-                    <i class="fa-solid fa-code-commit"></i>
+                <button type="submit" id="submit-btn" onclick="playClickSound()" class="elite-btn w-full py-4 rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-terminal"></i>
                     <span data-i18n="submitBtn">تأكيد حجز الموعد وإرساله</span>
                 </button>
             </form>
 
             <!-- Success Alert -->
-            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-indigo-950/90 border border-indigo-400 text-teal-100 text-center text-xs font-bold">
-                <i class="fa-solid fa-circle-check text-xl mb-1 block text-teal-300"></i>
-                <span data-i18n="successMsg">Booking Successful! Your appointment has been secured privately.</span>
+            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-slate-950 border border-pink-500 text-pink-300 text-center text-xs font-bold">
+                <i class="fa-solid fa-circle-check text-xl mb-1 block text-pink-400"></i>
+                <span data-i18n="successMsg">Booking Successful! Your elite appointment has been secured.</span>
             </div>
 
         </section>
@@ -261,17 +265,17 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 glass-panel rounded-2xl mb-4 gap-4">
-        <div data-i18n="footer">&copy; 2026 Archx.dev. جميع الحقوق محفوظة.</div>
+    <footer class="w-full max-w-5xl mx-auto p-4 relative z-10 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 elite-panel rounded-2xl mb-4 gap-4">
+        <div data-i18n="footer">&copy; 2026 Archx.core. جميع الحقوق محفوظة.</div>
         <div class="flex items-center gap-4">
-            <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-teal-300 transition font-bold">
-                <i class="fa-brands fa-instagram text-base text-teal-300"></i>
+            <a href="https://instagram.com/Archx_co" target="_blank" onclick="playClickSound()" class="flex items-center gap-2 hover:text-pink-400 transition font-bold">
+                <i class="fa-brands fa-instagram text-base text-pink-500"></i>
                 <span id="instagram-text">Archx_co</span>
             </a>
         </div>
     </footer>
 
-    <!-- Script for Sound, 3D, and Booking Logic -->
+    <!-- Script for Pink Cyber 3D Core & Interactive Booking Logic -->
     <script>
         // Web Audio API for interactive click sound
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -283,8 +287,8 @@
                 const osc = audioCtx.createOscillator();
                 const gainNode = audioCtx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.05);
+                osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.05);
                 gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
                 osc.connect(gainNode);
@@ -297,54 +301,54 @@
         // Bilingual translations dictionary
         const translations = {
             ar: {
-                subtitle: "Next-Gen Dev & Architecture",
-                bookBtn: "احجز موعدك",
-                badge: "منصة البرمجة وتطوير الواجهات الذكية 2026",
-                heroTitle: "نصنع لك أنظمة برمجية وواجهات تفاعلية <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500\">بمعايير المستقبل</span>",
-                heroDesc: "حلول رقمية متطورة، أكواد نظيفة، وهندسة برمجية ثلاثية الأبعاد تضع مشروعك في قمة التنافسية العالمية.",
-                ctaPrimary: "ابدأ حجز استشارتك",
-                modalTitle: "نظام الحجز الذكي والمواعيد",
-                modalDesc: "اختر التاريخ والساعة المناسبة. المواعيد المحجوزة ستظهر خطاً عليها ولا يمكن حجزها مجدداً، ويتم حفظ كل يوم بشكل مستقل!",
+                subtitle: "Elite Pink Cyber Architecture",
+                bookBtn: "حجز استشارة فورية",
+                badge: "منصة هندسة النظم المتقدمة والأمن السيبراني 2026",
+                heroTitle: "أنظمة برمجية خارقة وهندسة شبكات <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">فائقة القوة والتأمين</span>",
+                heroDesc: "حلول رقمية هجومية ودفاعية، هندسة خوادم متقدمة، وأكواد برمجية لا تقبل الخلل لضمان سيطرة مشروعك المطلقة.",
+                ctaPrimary: "ابدأ حجز استشارتك الآن",
+                modalTitle: "نظام الحجز السيبراني الذكي",
+                modalDesc: "اختر التاريخ والساعة بدقة. المواعيد المحجوزة يتم شطبها فورياً ولا يمكن حجزها مرة أخرى!",
                 nameLabel: "اسمك الكريم *",
                 namePlaceholder: "أدخل اسمك الكامل",
                 phoneLabel: "رقم الهاتف / الواتساب (بدون إيميل) *",
                 phonePlaceholder: "00962xxxxxxxx",
-                serviceLabel: "نوع الخدمة المطلوبة",
+                serviceLabel: "نوع الخدمة المتقدمة",
                 dateLabel: "تاريخ الموعد *",
                 timeLabel: "اختر الساعة المناسبة (المحجوز يشطب تلقائياً) *",
-                msgLabel: "تفاصيل وملاحظات المشروع",
-                msgPlaceholder: "اكتب تفاصيل مشروعك أو فكرتك البرمجية...",
+                msgLabel: "تفاصيل النظام أو المشروع التقني",
+                msgPlaceholder: "اكتب تفاصيل النظام، متطلبات الأمان، أو فكرة مشروعك...",
                 submitBtn: "تأكيد حجز الموعد وإرساله",
-                successMsg: "Booking Successful! Your appointment has been secured privately.",
-                opt1: "تطوير منصة ويب متكاملة",
-                opt2: "برمجة واجهات 3D تفاعلية",
-                opt3: "استشارة برمجية وتطويرية",
-                footer: "&copy; 2026 Archx.dev. جميع الحقوق محفوظة."
+                successMsg: "Booking Successful! Your elite appointment has been secured.",
+                opt1: "هندسة خوادم وأنظمة متقدمة",
+                opt2: "أمن سيبراني واختبار اختراق",
+                opt3: "استشارة برمجية وهندسة معمارية",
+                footer: "&copy; 2026 Archx.core. جميع الحقوق محفوظة."
             },
             en: {
-                subtitle: "Next-Gen Dev & Architecture",
-                bookBtn: "Book Slot",
-                badge: "Next-Gen Development & Smart UI Platform 2026",
-                heroTitle: "Building Software Systems & Interactive UIs <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-blue-500\">with Future Standards</span>",
-                heroDesc: "Advanced digital solutions, clean code, and 3D architectural engineering that elevate your project to global competitiveness.",
-                ctaPrimary: "Start Consultation Booking",
-                modalTitle: "Smart Booking & Appointment System",
-                modalDesc: "Select your preferred date & time. Booked slots show a strikethrough and cannot be re-booked. Each day is saved independently!",
+                subtitle: "Elite Pink Cyber Architecture",
+                bookBtn: "Book Instant Consult",
+                badge: "Advanced Systems Engineering & Cyber Security 2026",
+                heroTitle: "Extreme Software Systems & Network Engineering <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-fuchsia-500\">with Maximum Security</span>",
+                heroDesc: "Offensive & defensive digital solutions, advanced server architecture, and flawless code to secure your project's absolute dominance.",
+                ctaPrimary: "Start Consultation Booking Now",
+                modalTitle: "Elite Cyber Booking System",
+                modalDesc: "Select your date & time carefully. Booked slots are struck through instantly and cannot be re-booked!",
                 nameLabel: "Your Full Name *",
                 namePlaceholder: "Enter your full name",
                 phoneLabel: "Phone / WhatsApp Number (No Email Required) *",
                 phonePlaceholder: "00962xxxxxxxx",
-                serviceLabel: "Required Service",
+                serviceLabel: "Advanced Service Type",
                 dateLabel: "Appointment Date *",
                 timeLabel: "Select Time Slot (Booked slots are struck through) *",
-                msgLabel: "Project Notes & Details",
-                msgPlaceholder: "Type your project details or software idea...",
+                msgLabel: "System & Project Details",
+                msgPlaceholder: "Type your system details, security requirements, or project idea...",
                 submitBtn: "Confirm & Send Appointment",
-                successMsg: "Booking Successful! Your appointment has been secured privately.",
-                opt1: "Full-Stack Web Platform Development",
-                opt2: "Interactive 3D UI Programming",
-                opt3: "Software & Development Consultation",
-                footer: "&copy; 2026 Archx.dev. All rights reserved."
+                successMsg: "Booking Successful! Your elite appointment has been secured.",
+                opt1: "Advanced Server & Systems Engineering",
+                opt2: "Cyber Security & Penetration Testing",
+                opt3: "Software Consultation & Architecture",
+                footer: "&copy; 2026 Archx.core. All rights reserved."
             }
         };
 
@@ -381,90 +385,96 @@
             });
         }
 
-        // Calm Floating Crystal Constellation — Three.js Background Animation
-        let scene, camera, renderer, particlesMesh, crystals = [];
+        // Three.js Pink Cyber Core 3D Background
+        let scene, camera, renderer, cyberParticles, cyberMeshes = [];
         let mouseX = 0, mouseY = 0;
         const clock3D = new THREE.Clock();
 
         function init3D() {
             const canvas = document.getElementById('webgl-canvas');
             scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x0b1329, 0.014);
+            scene.fog = new THREE.FogExp2(0x07050a, 0.014);
 
             camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 26;
+            camera.position.z = 24;
 
             renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Soft ambient + gentle colored lights (easy on the eyes)
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
             scene.add(ambientLight);
 
-            const tealLight = new THREE.PointLight(0x5eead4, 3, 85);
-            tealLight.position.set(18, 14, 18);
-            scene.add(tealLight);
+            const pinkLight = new THREE.PointLight(0xec4899, 5, 100);
+            pinkLight.position.set(18, 15, 18);
+            scene.add(pinkLight);
 
-            const periwinkleLight = new THREE.PointLight(0x818cf8, 3, 85);
-            periwinkleLight.position.set(-18, -12, 16);
-            scene.add(periwinkleLight);
+            const purpleLight = new THREE.PointLight(0xa855f7, 4, 100);
+            purpleLight.position.set(-18, -15, 16);
+            scene.add(purpleLight);
 
-            // Floating low-poly crystals in a soft pastel palette
-            const crystalColors = [0x5eead4, 0x818cf8, 0x67e8f9, 0xa5b4fc, 0x99f6e4];
-            const crystalGroup = new THREE.Group();
-            const crystalCount = 8;
+            // Pink & Purple Cyber Geometries
+            const geometries = [
+                new THREE.TorusKnotGeometry(1.2, 0.35, 64, 16),
+                new THREE.DodecahedronGeometry(1.4, 0),
+                new THREE.BoxGeometry(1.6, 1.6, 1.6)
+            ];
 
-            for (let i = 0; i < crystalCount; i++) {
-                const size = 1.1 + Math.random() * 1.7;
-                const geometry = new THREE.IcosahedronGeometry(size, 0);
-                const color = crystalColors[i % crystalColors.length];
+            const colors = [0xec4899, 0xd946ef, 0xa855f7, 0xf43f5e];
+            const group = new THREE.Group();
+            const count = 14;
+
+            for (let i = 0; i < count; i++) {
+                const geo = geometries[i % geometries.length];
+                const color = colors[i % colors.length];
 
                 const material = new THREE.MeshStandardMaterial({
                     color: color,
                     wireframe: true,
                     transparent: true,
-                    opacity: 0.5,
-                    roughness: 0.35,
-                    metalness: 0.5
+                    opacity: 0.7,
+                    roughness: 0.15,
+                    metalness: 0.85
                 });
 
-                const mesh = new THREE.Mesh(geometry, material);
-                const angle = (i / crystalCount) * Math.PI * 2;
-                const radius = 9 + Math.random() * 7;
+                const mesh = new THREE.Mesh(geo, material);
+                const angle = (i / count) * Math.PI * 2;
+                const radius = 7 + Math.random() * 9;
                 mesh.position.set(
                     Math.cos(angle) * radius,
-                    (Math.random() - 0.5) * 11,
-                    Math.sin(angle) * radius - 6
+                    (Math.random() - 0.5) * 12,
+                    Math.sin(angle) * radius - 4
                 );
+                
                 mesh.userData = {
-                    floatSpeed: 0.25 + Math.random() * 0.35,
+                    floatSpeed: 0.3 + Math.random() * 0.4,
                     floatOffset: Math.random() * Math.PI * 2,
-                    rotSpeedX: (Math.random() - 0.5) * 0.005,
-                    rotSpeedY: (Math.random() - 0.5) * 0.007,
+                    rotSpeedX: (Math.random() - 0.5) * 0.012,
+                    rotSpeedY: (Math.random() - 0.5) * 0.015,
                     baseY: mesh.position.y
                 };
-                crystalGroup.add(mesh);
-                crystals.push(mesh);
-            }
-            scene.add(crystalGroup);
 
-            // Soft drifting star-dust particles
-            const particlesCount = 450;
-            const posArray = new Float32Array(particlesCount * 3);
-            for(let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 70;
+                group.add(mesh);
+                cyberMeshes.push(mesh);
             }
-            const particlesGeo = new THREE.BufferGeometry();
-            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMat = new THREE.PointsMaterial({
-                size: 0.14,
-                color: 0xc7d2fe,
+            scene.add(group);
+
+            // Pink Cyber Particles Grid
+            const pCount = 550;
+            const posArray = new Float32Array(pCount * 3);
+            for(let i = 0; i < pCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 80;
+            }
+            const pGeo = new THREE.BufferGeometry();
+            pGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const pMat = new THREE.PointsMaterial({
+                size: 0.18,
+                color: 0xf472b6,
                 transparent: true,
-                opacity: 0.5
+                opacity: 0.6
             });
-            particlesMesh = new THREE.Points(particlesGeo, particlesMat);
-            scene.add(particlesMesh);
+            cyberParticles = new THREE.Points(pGeo, pMat);
+            scene.add(cyberParticles);
 
             window.addEventListener('resize', onWindowResize);
             window.addEventListener('mousemove', onMouseMove3D);
@@ -480,20 +490,19 @@
             requestAnimationFrame(animate);
             const t = clock3D.getElapsedTime();
 
-            crystals.forEach(mesh => {
+            cyberMeshes.forEach(mesh => {
                 const d = mesh.userData;
                 mesh.rotation.x += d.rotSpeedX;
                 mesh.rotation.y += d.rotSpeedY;
-                mesh.position.y = d.baseY + Math.sin(t * d.floatSpeed + d.floatOffset) * 1.3;
+                mesh.position.y = d.baseY + Math.sin(t * d.floatSpeed + d.floatOffset) * 1.5;
             });
 
-            if(particlesMesh) {
-                particlesMesh.rotation.y += 0.0005;
+            if(cyberParticles) {
+                cyberParticles.rotation.y += 0.0007;
             }
 
-            // Gentle parallax follow — subtle, not jumpy
-            camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
-            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
+            camera.position.x += (mouseX * 3.5 - camera.position.x) * 0.03;
+            camera.position.y += (-mouseY * 2.5 - camera.position.y) * 0.03;
             camera.lookAt(scene.position);
 
             renderer.render(scene, camera);
@@ -519,14 +528,14 @@
 
         function getStoredBookings() {
             try {
-                return JSON.parse(localStorage.getItem('archx_dev_bookings_v2') || '{}');
+                return JSON.parse(localStorage.getItem('archx_core_bookings_pink_v1') || '{}');
             } catch(e) {
                 return {};
             }
         }
 
         function saveStoredBookings(bookings) {
-            localStorage.setItem('archx_dev_bookings_v2', JSON.stringify(bookings));
+            localStorage.setItem('archx_core_bookings_pink_v1', JSON.stringify(bookings));
         }
 
         function renderTimeSlots() {
@@ -542,7 +551,7 @@
                 const isBooked = bookedTimesForDate.includes(time);
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = `time-slot-btn py-3 rounded-xl text-xs font-bold transition`;
+                btn.className = `time-slot-btn py-3 rounded-xl text-xs transition`;
                 btn.innerText = time;
                 
                 if (isBooked) {
@@ -586,7 +595,7 @@
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> ' + (currentLang === 'ar' ? 'جاري تأكيد الحجز...' : 'Processing Booking...');
 
             const formData = new FormData(form);
-            formData.set('subject', `حجز موعد برمجي جديد (${selectedDate} - ${selectedTime})`);
+            formData.set('subject', `حجز موعد كتاب جديد (${selectedDate} - ${selectedTime})`);
             
             try {
                 await fetch('https://api.web3forms.com/submit', {
@@ -603,12 +612,12 @@
                 setTimeout(() => {
                     alertBox.classList.add('hidden');
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fa-solid fa-code-commit"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
+                    submitBtn.innerHTML = '<i class="fa-solid fa-terminal"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
                 }, 5000);
             } catch (error) {
-                alertBox.classList.remove('hidden');
+                alertBox.classList.add('hidden');
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-code-commit"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
+                submitBtn.innerHTML = '<i class="fa-solid fa-terminal"></i> <span data-i18n="submitBtn">' + (currentLang === 'ar' ? 'تأكيد حجز الموعد وإرساله' : 'Confirm & Send Appointment') + '</span>';
             }
         }
 
