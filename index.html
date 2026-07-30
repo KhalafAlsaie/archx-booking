@@ -52,7 +52,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vw;
+            height: 100vh;
             z-index: -1;
             outline: none;
         }
@@ -66,7 +66,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Interactive Glow Effect when boxes are clicked/focused */
         .elite-panel:focus-within, input:focus, select:focus, textarea:focus {
             border-color: #ec4899 !important;
             box-shadow: 0 0 30px rgba(236, 72, 153, 0.5), inset 0 0 15px rgba(236, 72, 153, 0.2) !important;
@@ -83,7 +82,7 @@
 
         .elite-btn:hover {
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 20px 40px -5px rgba(168, 85, 247, 0.7), 0 0 25px rgba(236, 72, 153, 0.8);
+            box-shadow: 0 20px 40px -5px rgba(168, 85, 247, 0.7);
             filter: brightness(1.2);
         }
 
@@ -99,7 +98,7 @@
             border-color: #ec4899;
             background: rgba(236, 72, 153, 0.18);
             color: #ffffff;
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
             transform: translateY(-2px);
         }
 
@@ -108,7 +107,7 @@
             color: #ffffff;
             border-color: #ffffff;
             font-weight: 900;
-            box-shadow: 0 0 35px rgba(236, 72, 153, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.7);
         }
 
         .time-slot-btn:disabled {
@@ -123,10 +122,9 @@
             transform: none !important;
         }
 
-        /* 3D Header Canvas container */
         #header-3d-logo {
-            width: 130px;
-            height: 45px;
+            width: 45px;
+            height: 40px;
             display: inline-block;
             vertical-align: middle;
         }
@@ -152,14 +150,16 @@
 
     <header class="w-full max-w-7xl mx-auto p-4 md:p-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-3 cursor-pointer group" onclick="playClickSound(); window.scrollTo({top: 0, behavior: 'smooth'})">
-            <div class="w-12 h-12 rounded-xl elite-panel flex items-center justify-center border border-pink-500/50 shadow-xl group-hover:border-purple-400 group-hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] transition">
+            <div class="w-12 h-12 rounded-xl elite-panel flex items-center justify-center border border-pink-500/50 shadow-xl group-hover:border-purple-400 transition">
                 <i class="fa-solid fa-shield-cat text-pink-500 text-xl animate-pulse"></i>
             </div>
             <div class="flex items-center gap-2">
-                <!-- 3D Animated Brand Title Logo -->
                 <div id="header-3d-logo"></div>
                 <div>
-                    <p class="text-[10px] tracking-widest text-purple-300 uppercase font-bold" data-i18n="subtitle">Elite Pink Cyber Architecture</p>
+                    <h1 class="text-lg md:text-xl font-black text-white tracking-wider flex items-center gap-1.5">
+                        Sitely <span class="w-2 h-2 rounded-full bg-pink-500 inline-block animate-ping"></span>
+                    </h1>
+                    <p class="text-[9px] tracking-widest text-purple-300 uppercase font-bold" data-i18n="subtitle">Elite Pink Cyber Architecture</p>
                 </div>
             </div>
         </div>
@@ -201,7 +201,7 @@
         <section id="booking-section" class="elite-panel p-6 md:p-12 rounded-[2.5rem] border border-pink-500/40 shadow-2xl">
             
             <div class="mb-8 text-center md:text-left" id="booking-header-container">
-                <div class="w-12 h-12 rounded-2xl bg-pink-500/15 text-pink-500 flex items-center justify-center text-xl mb-3 border border-pink-500/40 mx-auto md:mx-0 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+                <div class="w-12 h-12 rounded-2xl bg-pink-500/15 text-pink-500 flex items-center justify-center text-xl mb-3 border border-pink-500/40 mx-auto md:mx-0">
                     <i class="fa-solid fa-microchip"></i>
                 </div>
                 <h3 class="text-2xl font-black text-white" data-i18n="modalTitle">Elite Digital Booking System</h3>
@@ -259,7 +259,7 @@
                 </button>
             </form>
 
-            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-slate-950 border border-pink-500 text-pink-300 text-center text-xs font-bold shadow-[0_0_20px_rgba(236,72,153,0.4)]">
+            <div id="success-alert" class="hidden mt-4 p-4 rounded-xl bg-slate-950 border border-pink-500 text-pink-300 text-center text-xs font-bold">
                 <i class="fa-solid fa-circle-check text-xl mb-1 block text-pink-400"></i>
                 <span data-i18n="successMsg">Booking Successful! Your elite appointment has been secured.</span>
             </div>
@@ -478,7 +478,6 @@
             window.addEventListener('mousemove', onMouseMove3D);
             animate();
 
-            // Initialize Header 3D Logo
             initHeader3D();
         }
 
@@ -486,7 +485,7 @@
             const container = document.getElementById('header-3d-logo');
             headerScene = new THREE.Scene();
             headerCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-            headerCamera.position.z = 5.5;
+            headerCamera.position.z = 4.5;
 
             headerRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             headerRenderer.setSize(container.clientWidth, container.clientHeight);
@@ -498,12 +497,11 @@
             headerScene.add(light);
             headerScene.add(new THREE.AmbientLight(0xffffff, 0.8));
 
-            // Create a sleek glowing 3D Torus Knot / Rotating Core for "Sitely" brand
-            const geometry = new THREE.TorusKnotGeometry(1.0, 0.3, 64, 16);
+            const geometry = new THREE.TorusKnotGeometry(0.7, 0.22, 64, 16);
             const material = new THREE.MeshStandardMaterial({
                 color: 0xec4899,
                 emissive: 0xd946ef,
-                emissiveIntensity: 0.5,
+                emissiveIntensity: 0.6,
                 wireframe: true,
                 roughness: 0.1,
                 metalness: 0.9
@@ -517,8 +515,8 @@
         function animateHeader3D() {
             requestAnimationFrame(animateHeader3D);
             if (headerMesh) {
-                headerMesh.rotation.x += 0.01;
-                headerMesh.rotation.y += 0.02;
+                headerMesh.rotation.x += 0.012;
+                headerMesh.rotation.y += 0.022;
             }
             headerRenderer.render(headerScene, headerCamera);
         }
